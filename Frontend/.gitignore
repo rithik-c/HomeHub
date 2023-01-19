@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+# Typescript
+tsconfig.spec.*
+
 # Node
 /node_modules
 npm-debug.log
@@ -16,11 +19,13 @@ yarn-error.log
 .project
 .classpath
 .c9/
+.editorconfig
 *.launch
 .settings/
 *.sublime-workspace
 
 # Visual Studio Code
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
