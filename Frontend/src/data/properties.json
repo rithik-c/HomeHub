@@ -1,38 +1,49 @@
 [
   {
     "Id" : 1,
+    "SellRent" : 1,
     "Name" : "Bowser's Castle",
     "Type" : "Castle",
-    "Price" : 72500
+    "Price" : 72500,
+    "Image" : "bowser's_castle.png"
   },
   {
     "Id" : 2,
+    "SellRent" : 1,
     "Name" : "Spongebob's Pineapple",
     "Type" : "House",
-    "Price" : 7000
+    "Price" : 7000,
+    "Image" : "Spongebob-House.jpg"
   },
   {
     "Id" : 3,
+    "SellRent" : 2,
     "Name" : "Epic Tree Fort",
     "Type" : "Tree House",
-    "Price" : 50170
+    "Price" : 50170,
+    "Image" : "AT_Treehouse.png"
   },
   {
     "Id" : 4,
-    "Name" : "Random Tower",
-    "Type" : "Tower",
-    "Price" : 100950
+    "SellRent" : 1,
+    "Name" : "Lakehouse",
+    "Type" : "House",
+    "Price" : 30499
   },
   {
     "Id" : 5,
+    "SellRent" : 1,
     "Name" : "Griffin House",
     "Type" : "House",
-    "Price" : 20500
+    "Price" : 20500,
+    "Image" : "Griffin_House.jpg"
   },
   {
     "Id" : 6,
+    "SellRent" : 2,
     "Name" : "Toad House",
     "Type" : "House",
-    "Price" : 10250
+    "Price" : 10250,
+    "Image" : "Toad_House.png"
   }
 ]

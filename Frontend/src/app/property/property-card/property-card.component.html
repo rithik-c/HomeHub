@@ -1,7 +1,9 @@
 <div class="card">
   <div class="card-img-wrapper">
 
-    <img class="card-img-top" src="assets/images/Spongebob-House.jpg" alt="Clipart of a house">
+    <img *ngIf="property.Image" class="card-img-top" src="assets/images/{{property.Image}}" alt="Clipart of a house">
+    <img *ngIf="!property.Image" class="card-img-top" src="assets/images/house_default.png" alt="Clipart of a house">
+
     <ul class="list-inline text-center member-icons animate">
       <li class="list-inline-item">
         <button class="btn btn-primary" routerLink="/property-detail/{{property.Id}}"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -13,8 +15,8 @@
 
   </div>
   <div class="card-body p-2">
-    <h1>{{property.Name}}</h1>
-    <h2>{{property.Type}}</h2>
-    <h3>{{property.Price}}</h3>
+    <h2>{{property.Name}}</h2>
+    <h3>{{property.Type}}</h3>
+    <h4>{{property.Price}}</h4>
   </div>
 </div>
