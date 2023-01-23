@@ -1,0 +1,38 @@
+[
+  {
+    "Id" : 1,
+    "Name" : "Bowser's Castle",
+    "Type" : "Castle",
+    "Price" : 72500
+  },
+  {
+    "Id" : 2,
+    "Name" : "Spongebob's Pineapple",
+    "Type" : "House",
+    "Price" : 7000
+  },
+  {
+    "Id" : 3,
+    "Name" : "Epic Tree Fort",
+    "Type" : "Tree House",
+    "Price" : 50170
+  },
+  {
+    "Id" : 4,
+    "Name" : "Random Tower",
+    "Type" : "Tower",
+    "Price" : 100950
+  },
+  {
+    "Id" : 5,
+    "Name" : "Griffin House",
+    "Type" : "House",
+    "Price" : 20500
+  },
+  {
+    "Id" : 6,
+    "Name" : "Toad House",
+    "Type" : "House",
+    "Price" : 10250
+  }
+]
