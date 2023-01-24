@@ -1,3 +1,7 @@
+.card {
+  min-height: 425px;
+}
+
 .card-img-wrapper{
   overflow: hidden;
   position: relative;
@@ -9,6 +13,7 @@
   transition-duration: 500ms;
   transition-timing-function: ease-out;
   opacity: 0.6;
+  height: 225px;
 }
 
 .card img {
@@ -16,6 +21,7 @@
   transform: scale(1, 1);
   transition-duration: 500ms;
   transition-timing-function: ease-out;
+  height: 225px;
 }
 
 .member-icons {
