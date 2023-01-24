@@ -25,7 +25,3 @@ export class HousingService {
     );
   }
 }
-function data(this: (any: any) => void, value: Object, index: number): unknown {
-  throw new Error('Function not implemented.');
-}
-

@@ -13,9 +13,9 @@ export class AddPropertyComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.addPropertyForm.controls['propName'].setValue('Default Value');
-    }, 10);
+    // setTimeout(() => {
+    //   this.addPropertyForm.controls['propName'].setValue('Default Value');
+    // }, 10);
   }
 
   onBack(){
