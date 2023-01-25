@@ -13,6 +13,7 @@ import { IProperty } from "../IProperty.interface";
 export class PropertyCardComponent {
 
   @Input() property!: IProperty;
+  @Input() hideIcons!: boolean;
 
   // Property: any = {
   //   "Id" : 1,
