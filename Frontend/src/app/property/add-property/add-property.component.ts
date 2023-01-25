@@ -25,7 +25,6 @@ export class AddPropertyComponent implements OnInit {
   onSubmit(){
     console.log("Congrats, form was submitted.");
     console.log(this.addPropertyForm);
-
   }
 
 }

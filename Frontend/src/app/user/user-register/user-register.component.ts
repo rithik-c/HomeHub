@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-user-register',
@@ -9,21 +11,12 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 export class UserRegisterComponent implements OnInit {
 
   registrationForm!: FormGroup;
-  user: any = {};
+  user!: User;
+  userSubmitted!: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService: UserServiceService) { }
 
   ngOnInit() {
-    // this.registrationForm = new FormGroup({
-    //   userName: new FormControl(null, Validators.required),
-    //   email: new FormControl(null, [Validators.required, Validators.email]),
-    //   password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-    //   confirmPassword: new FormControl(null, [Validators.required]),
-    //   mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)])
-    // }, this.passwordMatchingValidator);
-
-    // this.registrationForm.controls['userName'].setValue('Default Value');
-
     this.createRegistrationForm();
   }
 
@@ -41,6 +34,28 @@ export class UserRegisterComponent implements OnInit {
     return fc.get('password')?.value === fc.get('confirmPassword')?.value ? null :
       { notmatched: true }
   }
+
+  onSubmit(){
+    console.log(this.registrationForm.value);
+    this.userSubmitted = true;
+
+    if (this.registrationForm.valid){
+      // this.user = Object.assign(this.user, this.registrationForm.value);
+      this.userService.addUser(this.userData());
+      this.registrationForm.reset();
+      this.userSubmitted = false;
+    }
+  }
+
+  userData(): User {
+    return this.user = {
+      userName: this.userName.value,
+      email: this.email.value,
+      password: this.password.value,
+      mobile: this.mobile.value
+    };
+  }
+
 
   // Getter methods for all form controls
   get userName() {
@@ -61,26 +76,6 @@ export class UserRegisterComponent implements OnInit {
 
   get mobile() {
     return this.registrationForm.get('mobile') as FormControl;
-  }
-
-
-  onSubmit(){
-    console.log(this.registrationForm.value);
-    this.user = Object.assign(this.user, this.registrationForm.value);
-    this.addUser(this.user);
-    this.registrationForm.reset();
-  }
-
-  addUser(user: any) {
-    let users = [];
-    if (localStorage.getItem('Users')){
-      users = JSON.parse(localStorage.getItem('Users') as string);
-      users = [user, ...users];
-    } else {
-      users = [user];
-    }
-
-    localStorage.setItem('Users', JSON.stringify(users));
   }
 
 }
