@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
-import { IProperty } from '../IProperty.interface';
+import { IPropertyBase } from 'src/app/model/ipropertybase';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PropertyListComponent implements OnInit {
 
   SellRent = 1;
-  properties!: Array<IProperty>;
+  properties!: Array<IPropertyBase>;
 
   constructor(private route: ActivatedRoute, private housingService: HousingService) { }
 
