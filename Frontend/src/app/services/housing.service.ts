@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs/internal/Observable';
-import { IPropertyBase } from '../model/ipropertybase';
 import { Property } from '../model/property';
 
 @Injectable({
@@ -20,10 +19,10 @@ export class HousingService {
     );
   }
 
-  getAllProperties(SellRent?: number): Observable<IPropertyBase[]> {
+  getAllProperties(SellRent?: number): Observable<Property[]> {
     return this.http.get('data/properties.json').pipe(
       map(data => {
-        const propertiesArray: Array<IPropertyBase> = [];
+        const propertiesArray: Array<Property> = [];
 
         if (localStorage.getItem('newProp')){
           const localProperties = JSON.parse(localStorage.getItem('newProp')!);
@@ -31,11 +30,11 @@ export class HousingService {
           if (localProperties){
             for (const id in localProperties) {
               if (SellRent){
-                if (localProperties.hasOwnProperty(id) && (localProperties as IPropertyBase[])[id as unknown as number].SellRent === SellRent){
-                  propertiesArray.push((localProperties as IPropertyBase[])[id as unknown as number]);
+                if (localProperties.hasOwnProperty(id) && (localProperties as Property[])[id as unknown as number].SellRent === SellRent){
+                  propertiesArray.push((localProperties as Property[])[id as unknown as number]);
                 }
               } else {
-                propertiesArray.push((localProperties as IPropertyBase[])[id as unknown as number]);
+                propertiesArray.push((localProperties as Property[])[id as unknown as number]);
               }
             }
           }
@@ -44,16 +43,17 @@ export class HousingService {
 
         for (const id in data) {
           if (SellRent){
-            if (data.hasOwnProperty(id) && (data as IPropertyBase[])[id as unknown as number].SellRent === SellRent){
-              propertiesArray.push((data as IPropertyBase[])[id as unknown as number]);
+            if (data.hasOwnProperty(id) && (data as Property[])[id as unknown as number].SellRent === SellRent){
+              propertiesArray.push((data as Property[])[id as unknown as number]);
             }
           } else {
-            propertiesArray.push((data as IPropertyBase[])[id as unknown as number]);
+            propertiesArray.push((data as Property[])[id as unknown as number]);
           }
         }
         return propertiesArray;
       })
     );
+    return this.http.get<Property[]>('data/properties.json');
   }
 
   addProperty(property: Property) {
