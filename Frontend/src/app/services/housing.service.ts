@@ -16,6 +16,20 @@ export class HousingService {
     return this.http.get('data/properties.json').pipe(
       map(data => {
         const propertiesArray: Array<IPropertyBase> = [];
+
+        if (localStorage.getItem('newProp')){
+          const localProperties = JSON.parse(localStorage.getItem('newProp')!);
+
+          if (localProperties){
+            for (const id in localProperties) {
+              if (localProperties.hasOwnProperty(id) && (localProperties as IPropertyBase[])[id as unknown as number].SellRent === SellRent){
+                propertiesArray.push((localProperties as IPropertyBase[])[id as unknown as number]);
+              }
+            }
+          }
+        }
+
+
         for (const id in data) {
           if (data.hasOwnProperty(id) && (data as IPropertyBase[])[id as unknown as number].SellRent === SellRent){
             propertiesArray.push((data as IPropertyBase[])[id as unknown as number]);
@@ -27,6 +41,23 @@ export class HousingService {
   }
 
   addProperty(property: Property) {
-    localStorage.setItem('newProp', JSON.stringify(property));
+    let newProp = [property];
+
+    if (localStorage.getItem('newProp')){
+      newProp = [property, ...JSON.parse(localStorage.getItem('newProp')!)];
+    }
+
+    localStorage.setItem('newProp', JSON.stringify(newProp));
   }
+
+  newPropID(){
+    if (localStorage.getItem('PID')){
+      localStorage.setItem('PID', String(+localStorage.getItem('PID')! + 1));
+      return +localStorage.getItem('PID')!;
+    } else {
+      localStorage.setItem('PID', '101');
+      return 101;
+    }
+  }
+
 }

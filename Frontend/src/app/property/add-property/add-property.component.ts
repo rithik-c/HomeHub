@@ -5,6 +5,7 @@ import { Router } from '@angular/router'
 import { IPropertyBase } from 'src/app/model/ipropertybase';
 import { Property } from 'src/app/model/property';
 import { HousingService } from 'src/app/services/housing.service';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-add-property',
@@ -37,7 +38,8 @@ export class AddPropertyComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private housingService: HousingService) { }
+              private housingService: HousingService,
+              private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.CreateAddPropertyForm();
@@ -71,7 +73,7 @@ export class AddPropertyComponent implements OnInit {
 
       OtherInfo: this.fb.group({
         RTM: [null, Validators.required],
-        PossessionOn: [null, Validators.required],
+        PossessionOn: [null],
         AOP: [null],
         Gated: [null],
         MainEntrance: [null],
@@ -90,10 +92,17 @@ export class AddPropertyComponent implements OnInit {
     if (this.AllTabsValid()){
       this.mapProperty();
       this.housingService.addProperty(this.property);
-      console.log("Congrats, your property was listed successfully");
+      this.alertify.success("Congrats, your property was listed successfully");
       console.log(this.addPropertyForm);
+
+      if (this.SellRent.value == '2'){
+        this.router.navigate(['/rent-property']);
+      } else {
+        this.router.navigate(['/']);
+      }
+
     } else {
-      console.log("Please review the form and provide all valid fields");
+      this.alertify.error("Please review the form and provide all valid fields");
 
     }
   }
@@ -130,6 +139,7 @@ export class AddPropertyComponent implements OnInit {
   }
 
   mapProperty(): void {
+    this.property.Id = this.housingService.newPropID();
     this.property.SellRent = +this.SellRent.value;
     this.property.BHK = this.BHK.value;
     this.property.PType = this.PType.value;
