@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
-import { IPropertyBase } from 'src/app/model/ipropertybase';
-import { Property } from 'src/app/model/property';
-import { HousingService } from 'src/app/services/housing.service';
-import { AlertifyService } from 'src/app/services/alertify.service';
+import { IPropertyBase } from 'app/model/ipropertybase';
+import { Property } from 'app/model/property';
+import { HousingService } from 'app/services/housing.service';
+import { AlertifyService } from 'app/services/alertify.service';
 
 @Component({
   selector: 'app-add-property',

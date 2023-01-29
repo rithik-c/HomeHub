@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertifyService } from 'src/app/services/alertify.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AlertifyService } from 'app/services/alertify.service';
+import { AuthService } from 'app/services/auth.service';
 
 @Component({
   selector: 'app-user-login',

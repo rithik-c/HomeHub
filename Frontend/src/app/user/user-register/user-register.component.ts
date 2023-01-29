@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { User } from 'src/app/model/user';
-import { UserService } from 'src/app/services/user.service';
-import { AlertifyService } from 'src/app/services/alertify.service';
+import { User } from 'app/model/user';
+import { UserService } from 'app/services/user.service';
+import { AlertifyService } from 'app/services/alertify.service';
 
 @Component({
   selector: 'app-user-register',
