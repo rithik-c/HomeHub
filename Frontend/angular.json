@@ -93,6 +93,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "RealEstate:build:production",
+            "firebaseProject": "homehub-angular",
+            "firebaseHostingSite": "homehub-angular"
+          }
         }
       }
     }

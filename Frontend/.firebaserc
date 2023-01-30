@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "homehub-angular": {
+      "hosting": {
+        "RealEstate": [
+          "homehub-angular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "homehub-angular"
+  }
+}
