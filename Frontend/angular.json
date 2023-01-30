@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RealEstate": {
+    "HomeHub": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "RealEstate:build:production"
+              "browserTarget": "HomeHub:build:production"
             },
             "development": {
-              "browserTarget": "RealEstate:build:development"
+              "browserTarget": "HomeHub:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RealEstate:build"
+            "browserTarget": "HomeHub:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "RealEstate:build:production",
+            "browserTarget": "HomeHub:build:production",
             "firebaseProject": "homehub-angular",
             "firebaseHostingSite": "homehub-angular"
           }

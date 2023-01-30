@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "RealEstate",
+    "target": "HomeHub",
     "public": "dist/real-estate",
     "ignore": [
       "**/.*"

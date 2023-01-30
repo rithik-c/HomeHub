@@ -2,7 +2,7 @@
   "targets": {
     "homehub-angular": {
       "hosting": {
-        "RealEstate": [
+        "HomeHub": [
           "homehub-angular"
         ]
       }
