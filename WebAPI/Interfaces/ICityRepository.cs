@@ -1,6 +1,6 @@
 using WebAPI.Models;
 
-namespace WebAPI.Data.Repo
+namespace WebAPI.Interfaces
 {
     public interface ICityRepository
     {
