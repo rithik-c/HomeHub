@@ -8,6 +8,5 @@ namespace WebAPI.Interfaces
 
          void AddCity(City city);
          void DeleteCity(int cityId);
-         Task<bool> SaveAsync();
     }
 }
