@@ -12,5 +12,11 @@ namespace WebAPI.Controllers
         {
             return new string[] { "Atlanta", "New York" };
         }
+
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "Atlanta";
+        }
     }
 }
