@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using WebAPI.Dtos;
 using WebAPI.Interfaces;
 using WebAPI.Models;
@@ -10,10 +12,12 @@ namespace WebAPI.Controllers
     public class CityController : ControllerBase
     {
         private readonly IUnitOfWork uow;
+        private readonly IMapper mapper;
 
-        public CityController(IUnitOfWork uow)
+        public CityController(IUnitOfWork uow, IMapper mapper)
         {
             this.uow = uow;
+            this.mapper = mapper;
         }
 
 
@@ -22,13 +26,15 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetCities()
         {
             var cities = await uow.CityRepository.GetCitiesAsync();
+            var citiesDto = mapper.Map<IEnumerable<CityDto>>(cities);
 
-            var citiesDto = from c in cities
-                select new CityDto()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                };
+            // // Manual Mapping without Automapper
+            // var citiesDto = from c in cities
+            //     select new CityDto()
+            //     {
+            //         Id = c.Id,
+            //         Name = c.Name
+            //     };
 
             return Ok(citiesDto);
         }
@@ -64,11 +70,15 @@ namespace WebAPI.Controllers
         [HttpPost("post")]
         public async Task<IActionResult> AddCity(CityDto cityDto)
         {
-            var city = new City{
-                Name = cityDto.Name,
-                LastUpdatedBy = 1,
-                LastUpdatedOn = DateTime.Now
-            };
+            // var city = new City{
+            //     Name = cityDto.Name,
+            //     LastUpdatedBy = 1,
+            //     LastUpdatedOn = DateTime.Now
+            // };
+            var city = mapper.Map<City>(cityDto);
+            city.LastUpdatedBy = 1;
+            city.LastUpdatedOn = DateTime.Now;
+
             uow.CityRepository.AddCity(city);
             await uow.SaveAsync();
 
