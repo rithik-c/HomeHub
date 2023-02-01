@@ -51,3 +51,5 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+/WebAPI/appsettings.json
+/WebAPI/appsettings.Development.json
