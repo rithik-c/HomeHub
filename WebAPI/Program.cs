@@ -3,6 +3,7 @@ using WebAPI.Data;
 using WebAPI.Middlewares;
 using WebAPI.Helpers;
 using WebAPI.Interfaces;
+using WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +23,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// app.ConfigureExceptionHandler(app.Environment);
-app.UseMiddleware<ExceptionMiddleware>();
+app.ConfigureExceptionHandler(app.Environment);
 
 app.UseCors(m => m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
