@@ -17,11 +17,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Custom Code
-var stringBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("Default"));
-stringBuilder.Password = builder.Configuration.GetSection("DBPassword").Value;
-var connectionString = stringBuilder.ConnectionString;
+// var stringBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("Default"));
+// stringBuilder.Password = builder.Configuration.GetSection("DBPassword").Value;
+// var connectionString = stringBuilder.ConnectionString;
 
-// var connectionString = builder.Configuration.GetConnectionString("Default");
+var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddCors();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
