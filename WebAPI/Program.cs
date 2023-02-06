@@ -6,6 +6,7 @@ using WebAPI.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,13 +17,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Custom Code
-var connectionString = builder.Configuration.GetConnectionString("Default");
+var stringBuilder = new SqlConnectionStringBuilder(builder.Configuration.GetConnectionString("Default"));
+stringBuilder.Password = builder.Configuration.GetSection("DBPassword").Value;
+var connectionString = stringBuilder.ConnectionString;
+
+// var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddCors();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-var secretKey = builder.Configuration.GetSection("AppSettings:key").Value;
+var secretKey = builder.Configuration.GetSection("AppSettings:Key").Value;
 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>{
